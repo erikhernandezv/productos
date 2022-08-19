@@ -1,0 +1,49 @@
+<div class="table-responsive card text-dark bg-light mb-3">
+    <div class="card-header">{{title}}</div>
+    <div class="card-body">
+        <button class="btn btn-outline-primary my-2" routerLink="/empleados/form">Adicionar</button>
+        <table class=" table table-hover table-striped ">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Tipo de documento</th>
+                    <th>Numero de documento</th>
+                    <th>Primer nombre</th>
+                    <th>Segundo Nombre</th>
+                    <th>Primer apellido</th>
+                    <th>Segundo Apellido</th>
+                    <!--<th>Email</th>
+                    <th>Fecha de ingreso</th>-->
+                    <th>Area</th>
+                    <!--<th>Estado</th>
+                    <th>Fecha creación</th>-->
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let empleado of empleados ">
+                    <td>{{empleado.emp_consecutivo}}</td>
+                    <td>{{empleado.emp_tipdocumento | lowercase }}</td>
+                    <td>{{empleado.emp_numdocumento}}</td>
+                    <td>{{empleado.emp_nombre1}}</td>
+                    <td>{{empleado.emp_nombre2}}</td>
+                    <td>{{empleado.emp_apellido1}}</td>
+                    <td>{{empleado.emp_apellido2}}</td>
+                    <!--<td>{{empleado.emp_email}}</td>
+                    <td>{{empleado.emp_fecingreso}}</td>-->
+                    <td>{{empleado.emp_area}}</td>
+                    <!--<td>{{empleado.emp_estado}}</td>
+                    <td>{{empleado.emp_fecregistro}}</td>-->
+                    <td>
+                        <button class="btn btn-outline-secondary my-2" [routerLink]="['/empleados/form',empleado.emp_consecutivo]">
+                          <fa-icon [icon]="faEdit"></fa-icon>
+                        </button>
+                        <button class="btn btn-outline-secondary my-2" (click)="eliminar(empleado)">
+                          <fa-icon [icon]="faTrash"></fa-icon>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

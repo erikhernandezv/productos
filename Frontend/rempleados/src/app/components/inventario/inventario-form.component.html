@@ -1,0 +1,54 @@
+<div class="table-responsive card text-dark bg-light mb-3">
+    <div class="card-header">{{title}}</div>
+    <div class="card-body">
+        <!--Aqui incluimos las alertas-->
+        <div [hidden]="!visible" class="alert {{color}} alert-dismissible fade show" role="alert">
+            {{mensaje}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          </button>
+        </div>
+
+        <!--Aqui finalizan las alertas-->
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <button class="btn btn-outline-primary my-2" routerLink="/inventario">  Volver  </button>
+        </div>
+
+        <form>
+            <div class="container-fluid">
+                <div class="row mb-3">
+                    <div class="from-group col-md-8">
+                        <label for="nombreProducto">Nombre del producto</label>
+                        <input type="text" placeholder="Nombre del producto " aria-label="Nombre del producto " name="nombreProducto " class="form-control " [(ngModel)]="inventario.nombreProducto ">
+                        <label id='nombreProducto-error' class="text-danger" *ngIf="error?.nombreProducto " for='nombreProducto'>{{ error.nombreProducto }}</label>
+                    </div>
+                    <div class=" from-group col-md-3 ">
+                        <label for="cantidad ">Cantidad</label>
+                        <input type="number" placeholder="Cantidad de productos" aria-label="Cantidad de productos" name="cantidad " class="form-control " [(ngModel)]="inventario.cantidad ">
+                        <label id='cantidad-error' class="text-danger" *ngIf="error?.cantidad " for='cantidad'>{{ error.cantidad }}</label>
+                    </div>
+                </div>
+                <div class="row mb-3 ">
+                    <div class="from-group col-md-3 ">
+                        <label for="fechaIngreso ">Fecha ingreso</label>
+                        <input type="date" placeholder="Cantidad de productos" aria-label="Cantidad de productos" name="fechaIngreso " class="form-control " [(ngModel)]="inventario.fechaIngreso ">
+                        <label id='fechaIngreso-error' class="text-danger" *ngIf="error?.fechaIngreso " for='fechaIngreso'>{{ error.fechaIngreso }}</label>
+                    </div>
+                    <div class="from-group col-md-8 ">
+                        <!--< app-usuarios (envRes)= "optionSelected($event)" >-->
+                        <label for="nombres">Usuarios</label>
+                        <select name="idUsuario" class="form-control">
+                        <option *ngFor="let user of usuarios" [ngValue]=user.idUsuario >{{user.nombres+" "+user.idUsuario}}</option>
+                        </select>
+                        <label id='idUsuario-error' class="text-danger" *ngIf="error?.idUsuario " for='idUsuario'>{{ error.idUsuario }}</label>
+                        <!--<label id='idUsuario-error' class="text-danger" *ngIf="error?.idUsuario " for='idUsuario'>{{ error.idUsuario }}</label>-->
+                    </div>
+                </div>
+            </div>
+            <div class="row my-4 ">
+                <div class="col-md-12 ">
+                    <button type="button " class="btn btn-outline-success" (click)="crear()">{{inventario.idMercancia? 'Editar': 'Guardar'}}</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

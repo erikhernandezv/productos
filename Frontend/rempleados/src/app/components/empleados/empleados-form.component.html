@@ -1,0 +1,80 @@
+<div class="table-responsive card text-dark bg-light mb-3">
+    <div class="card-header">{{title}}</div>
+    <div class="card-body">
+        <!--Aqui incluimos las alertas-->
+        <div [hidden]="!visible" class="alert {{color}} alert-dismissible fade show" role="alert">
+            {{mensaje}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          </button>
+        </div>
+
+        <!--Aqui finalizan las alertas-->
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <button class="btn btn-outline-primary my-2" routerLink="/empleados">  Volver  </button>
+        </div>
+
+        <form>
+            <div class="container-fluid">
+                <div class="row mb-3">
+                    <div class="from-group col-md-3">
+                        <label for="emp_tipdocumento">Tipo de documento</label>
+                        <!--<input type="text" name="emp_tipdocumento" class="form-control" [(ngModel)]="empleado.emp_tipdocumento">-->
+                        <select name="emp_tipdocumento" class="form-control" [(ngModel)]="empleado.emp_tipdocumento">
+                          <option [value]="item" *ngFor="let item of tiposDocumentos">{{item}}</option>
+                        </select>
+                        <label id='emp_tipdocumento-error' class="text-danger" *ngIf="error?.emp_tipdocumento " for='emp_tipdocumento'>{{ error.emp_tipdocumento }}</label>
+                    </div>
+                    <div class=" from-group col-md-9 ">
+                        <label for="emp_numdocumento ">Numero de documento</label>
+                        <input type="text" placeholder="Numero de documento " aria-label="Numero de documento " name="emp_numdocumento " class="form-control " [(ngModel)]="empleado.emp_numdocumento ">
+                        <label id='emp_numdocumento-error' class="text-danger" *ngIf="error?.emp_numdocumento " for='emp_numdocumento'>{{ error.emp_numdocumento }}</label>
+                    </div>
+                </div>
+                <div class="row mb-3 ">
+                    <div class="from-group col-md-6 ">
+                        <label for="emp_nombre1 ">Primer nombre</label>
+                        <input type="text" placeholder="Primer nombre " aria-label="Primer nombre " name="emp_nombre1 " class="form-control " [(ngModel)]="empleado.emp_nombre1 ">
+                        <label id='emp_nombre1-error' class="text-danger" *ngIf="error?.emp_nombre1 " for='emp_nombre1'>{{ error.emp_nombre1 }}</label>
+                    </div>
+                    <div class="from-group col-md-6 ">
+                        <label for="emp_nombre2 ">Segundo nombre</label>
+                        <input type="text " placeholder="Segundo nombre " aria-label="Segundo nombre " name="emp_nombre2 " class="form-control " [(ngModel)]="empleado.emp_nombre2 ">
+                        <label id='emp_nombre2-error' class="text-danger" *ngIf="error?.emp_nombre2 " for='emp_nombre2'>{{ error.emp_nombre2 }}</label>
+                    </div>
+                </div>
+                <div class="row mb-3 ">
+                    <div class="from-group col-md-6 ">
+                        <label for="emp_apellido1 ">Primer apellido</label>
+                        <input type="text " placeholder="Primer apellido " aria-label="Primer apellido " name="emp_apellido1 " class="form-control " [(ngModel)]="empleado.emp_apellido1 ">
+                        <label id='emp_apellido1-error' class="text-danger" *ngIf="error?.emp_apellido1 " for='emp_apellido1'>{{ error.emp_apellido1 }}</label>
+                    </div>
+                    <div class="from-group col-md-6 ">
+                        <label for="emp_apellido2 ">Segundo apellido</label>
+                        <input type="text " placeholder="Segundo apellido " aria-label="Segundo apellido " name="emp_apellido2 " class="form-control " [(ngModel)]="empleado.emp_apellido2 ">
+                        <label id='emp_apellido2-error' class="text-danger" *ngIf="error?.emp_apellido2 " for='emp_apellido2'>{{ error.emp_apellido2 }}</label>
+                    </div>
+                </div>
+                <div class="row mb-3 ">
+                    <div class="from-group col-md-5 ">
+                        <label for="emp_area ">Area</label>
+                        <!--<input type="text " name="emp_area " class="form-control " [(ngModel)]="empleado.emp_area ">-->
+                        <select name="emp_area " class="form-control " [(ngModel)]="empleado.emp_area ">
+                          <option [value]="item " *ngFor="let item of areas ">{{item}}</option>
+                        </select>
+                        <label id='emp_area-error' class="text-danger" *ngIf="error?.emp_area " for='emp_area'>{{ error.emp_area }}</label>
+                    </div>
+                    <div class="from-group col-md-5 ">
+                        <label for="emp_fecingreso ">Fecha de ingreso</label>
+                        <input type="date " placeholder="Fecha de ingreso " aria-label="Fecha de ingreso " name="emp_fecingreso " class="form-control " [(ngModel)]="empleado.emp_fecingreso ">
+                        <label id='emp_fecingreso-error' class="text-danger" *ngIf="error?.emp_fecingreso " for='emp_fecingreso'>{{ error.emp_fecingreso }}</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row my-4 ">
+                <div class="col-md-12 ">
+                    <button type="button " class="btn btn-outline-success" (click)="empleado.id? editar(): crear()">{{empleado.id? 'Editar': 'Guardar'}}</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

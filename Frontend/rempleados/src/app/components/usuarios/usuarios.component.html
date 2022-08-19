@@ -1,0 +1,6 @@
+<label for="nombres">Usuarios</label>
+<select name="idUsuario" class="form-control" [(ngModel)]="id" (ngModelChange)="onChange($event)">
+  <option *ngFor="let user of usuarios" [ngValue]=user.idUsuario >{{user.nombres+" "+user.idUsuario}}</option>
+</select>
+<label id='idUsuario-error' class="text-danger" *ngIf="error?.idUsuario " for='idUsuario'>{{ error.idUsuario }}</label>
+<!--[(ngModel)]="usuarios.nombres"-->

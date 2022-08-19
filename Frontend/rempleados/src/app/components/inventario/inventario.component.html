@@ -1,0 +1,37 @@
+<div class="table-responsive card text-dark bg-light mb-3">
+    <div class="card-header">{{title}}</div>
+    <div class="card-body">
+        <button class="btn btn-outline-primary my-2" routerLink="/inventario/form">Adicionar</button>
+        <table class=" table table-hover table-striped ">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Producto</th>
+                    <th>Cantidad</th>
+                    <th>Fecha Ingreso</th>
+                    <th>Usuario</th>
+                    <th>Cargo</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let inventory of inventarios ">
+                    <td>{{inventory.idMercancia}}</td>
+                    <td>{{inventory.nombreProducto | uppercase }}</td>
+                    <td>{{inventory.cantidad}}</td>
+                    <td>{{inventory.fechaIngreso}}</td>
+                    <td>{{inventory.usuario.nombres}}</td>
+                    <td>{{inventory.usuario.cargo.nombre| lowercase}}</td>
+                    <td>
+                        <button class="btn btn-outline-secondary my-2" [routerLink]="['/inventario/form',inventory.idMercancia]">
+                          <fa-icon [icon]="faEdit"></fa-icon>
+                        </button>
+                        <button class="btn btn-outline-secondary my-2" (click)="eliminar(inventory)">
+                          <fa-icon [icon]="faTrash"></fa-icon>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
